@@ -2,6 +2,7 @@ package com.devstack.lms.programserviceapi.controller;
 
 import com.devstack.lms.programserviceapi.dto.request.RequestProgramDto;
 import com.devstack.lms.programserviceapi.service.ProgramService;
+import com.devstack.lms.programserviceapi.service.impl.JwtService;
 import com.devstack.lms.programserviceapi.util.StandardResponse;
 
 import lombok.RequiredArgsConstructor;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class ProgramController {
     private final ProgramService programService;
+    private final JwtService jwtService;
 
     @PostMapping
     private ResponseEntity<StandardResponse> createProgram(@RequestBody RequestProgramDto requestProgramDto) {

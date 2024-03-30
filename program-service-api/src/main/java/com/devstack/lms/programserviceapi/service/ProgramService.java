@@ -8,4 +8,5 @@ import java.util.List;
 public interface ProgramService {
     public void createProgram(RequestProgramDto programDto);
     List<ResponseProgramDto> findAllPrograms();
+    List<ResponseProgramDto> findAllMyPrograms(String email);
 }

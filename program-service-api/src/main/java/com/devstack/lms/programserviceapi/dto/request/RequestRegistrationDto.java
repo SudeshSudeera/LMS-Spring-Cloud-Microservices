@@ -1,8 +1,8 @@
-package com.devstack.lms.programserviceapi.dto.response;
+package com.devstack.lms.programserviceapi.dto.request;
 
+import com.devstack.lms.programserviceapi.entity.Program;
 import com.devstack.lms.programserviceapi.entity.Subject;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -13,11 +13,9 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Builder
-public class ResponseProgramDto {
-    private String id;
-    private String name;
-    private BigDecimal price;
-    private Date startDate;
-    private List<Subject> subjects;
+public class RequestRegistrationDto {
+    private String email;
+    private BigDecimal amount;
+    private Date date;
+    private Program program;
 }
