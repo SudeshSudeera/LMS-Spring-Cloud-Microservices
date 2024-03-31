@@ -18,7 +18,7 @@ public class RegistrationController {
     private final JwtService jwtService;
 
     @PostMapping
-    private ResponseEntity<StandardResponse> register(@RequestBody RequestRegistrationDto data) {
+    public ResponseEntity<StandardResponse> register(@RequestBody RequestRegistrationDto data) {
         registrationService.register(data.getProgram(), data.getEmail(),
                 data.getAmount(), data.getDate());
         return new ResponseEntity<>(
@@ -29,7 +29,7 @@ public class RegistrationController {
     }
 
     @GetMapping("/my-list")
-    private ResponseEntity<StandardResponse> findMyPrograms(
+    public ResponseEntity<StandardResponse> findMyPrograms(
             @RequestHeader("Authorization") String tokenHeader
     ) {
         String token = tokenHeader.replace("Bearer ", "");
@@ -42,7 +42,7 @@ public class RegistrationController {
     }
 
     @GetMapping("/my-payments")
-    private ResponseEntity<StandardResponse> findMyPayments(
+    public ResponseEntity<StandardResponse> findMyPayments(
             @RequestHeader("Authorization") String tokenHeader
     ) {
         String token = tokenHeader.replace("Bearer ", "");

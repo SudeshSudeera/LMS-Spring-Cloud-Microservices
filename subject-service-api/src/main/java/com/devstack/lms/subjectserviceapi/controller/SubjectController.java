@@ -18,7 +18,7 @@ public class SubjectController {
     private final SubjectService subjectService;
 
     @PostMapping
-    private ResponseEntity<StandardResponse> createSubject(@RequestBody RequestSubjectDto requestSubjectDto) {
+    public ResponseEntity<StandardResponse> createSubject(@RequestBody RequestSubjectDto requestSubjectDto) {
         subjectService.createSubject(requestSubjectDto);
         return new ResponseEntity<>(
                 new StandardResponse(201, "Subject was Saved!",
@@ -29,12 +29,12 @@ public class SubjectController {
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    private boolean isListAvailable(@PathVariable List<Long> id) {
+    public boolean isListAvailable(@PathVariable List<Long> id) {
         return subjectService.isListAvailable(id);
     }
 
     @GetMapping("/list")
-    private ResponseEntity<StandardResponse> findAll() {
+    public ResponseEntity<StandardResponse> findAll() {
         return new ResponseEntity<>(
                 new StandardResponse(200, "List of subjects!",
                         subjectService.findAll()),

@@ -8,6 +8,7 @@ import com.devstack.lms.programserviceapi.util.StandardResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -18,7 +19,7 @@ public class ProgramController {
     private final JwtService jwtService;
 
     @PostMapping
-    private ResponseEntity<StandardResponse> createProgram(@RequestBody RequestProgramDto requestProgramDto) {
+    public ResponseEntity<StandardResponse> createProgram(@RequestBody RequestProgramDto requestProgramDto) {
         programService.createProgram(requestProgramDto);
         return new ResponseEntity<>(
                 new StandardResponse(201, "Program was Saved!",
@@ -27,7 +28,8 @@ public class ProgramController {
         );
     }
     @GetMapping
-    private ResponseEntity<StandardResponse> findAllPrograms() {
+    @PreAuthorize("hasRole('admin')")
+    public ResponseEntity<StandardResponse> findAllPrograms() {
         return new ResponseEntity<>(
                 new StandardResponse(200, "List of programs!",
                         programService.findAllPrograms()),
